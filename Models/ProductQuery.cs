@@ -10,7 +10,6 @@ namespace miraCakesApp.Models
 {
     public class ProductQuery
     {
-
         public readonly AppDb Db;
         public ProductQuery(AppDb db)
         {

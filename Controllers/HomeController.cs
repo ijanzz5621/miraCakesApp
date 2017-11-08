@@ -47,8 +47,8 @@ namespace miraCakesApp.Controllers
             string password = loginModel.Password;
 
             Console.WriteLine("Username is: " + username);
-
-            return RedirectToAction("/");
+            
+            return RedirectToAction("Index");
         }
 
         private void TestMySql(){
