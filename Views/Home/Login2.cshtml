@@ -1,3 +1,5 @@
+@model LoginModel
+
 @{
     Layout="_LoginLayout";
 }
@@ -23,7 +25,7 @@
                                     <h1>Welcome to <span>Register</span></h1>
                                 </div>
                                 <div class="login-form">
-                                    <form>
+                                    <form asp-action="Register" asp-controller="Home">
                                         <div class="form-details">
                                             <label class="user">
                                                 <input type="text" name="username" placeholder="Full Name" id="username">
@@ -38,7 +40,7 @@
                                                 <input type="password" name="passsword" placeholder="Confirm Password" id="password">
                                             </label>
                                         </div>
-                                        <button type="submit" class="form-btn" onsubmit="">Register</button>
+                                        <button type="submit" class="form-btn">Register</button>
                                     </form>
                                 </div>
                             </div>
@@ -51,7 +53,7 @@
                                     <h1>Welcome to <span>Login</span></h1>
                                 </div>
                                 <div class="login-form">
-                                    <form>
+                                    <form asp-action="Login" asp-controller="Home">
                                         <div class="form-details">
                                             <label class="user">
                                                 <input type="text" name="username" placeholder="Username" id="username">

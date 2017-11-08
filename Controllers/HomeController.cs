@@ -38,7 +38,17 @@ namespace miraCakesApp.Controllers
         }
 
         public IActionResult Login(){
-            return View ("Views/Home/Login.cshtml");
+            return View ("Views/Home/Login2.cshtml");
+        }
+
+        [HttpPost]
+        public IActionResult Login(LoginModel loginModel){
+            string username = loginModel.Username;
+            string password = loginModel.Password;
+
+            Console.WriteLine("Username is: " + username);
+
+            return RedirectToAction("/");
         }
 
         private void TestMySql(){
