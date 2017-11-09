@@ -1,3 +1,5 @@
+@model LoginModel
+
 @{
     Layout="_LoginLayout";
 }
@@ -15,13 +17,15 @@
                                     <h1>Welcome to <span>Login</span></h1>
                                 </div>
                                 <div class="login-form">
-                                    <form>
+                                    <form asp-action="Login" asp-controller="Admin">
                                         <div class="form-details">
                                             <label class="user">
-                                                <input type="text" name="username" placeholder="Username" id="username" value="Admin" readonly>
+                                                <!-- <input type="text" name="username" placeholder="Username" id="username" value="Admin" readonly> -->
+                                                @Html.TextBoxFor(m => m.Username)
                                             </label>
                                             <label class="pass">
-                                                <input type="password" name="passsword" placeholder="Password" id="password">
+                                                <!-- <input type="password" name="passsword" placeholder="Password" id="password"> -->
+                                                @Html.TextBoxFor(m => m.Password)
                                             </label>
                                         </div>
                                         <button type="submit" class="form-btn" onsubmit="">Login</button>
