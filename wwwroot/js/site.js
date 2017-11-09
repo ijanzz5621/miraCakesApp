@@ -1,15 +1,15 @@
 ﻿// Write your JavaScript code.
 
-function callAjax(url, data) {
+function callAjax(url, method, data) {
     
     var fullUrl = getDomainName() + "/" + url;
 
     //console.log(fullUrl);
 
     return $.ajax({
-        type: 'POST',
+        type: method,
         async: true,
-        //data: JSON.stringify(data),
+        data: JSON.stringify(data),
         contentType: 'application/json',
         url: fullUrl
     });

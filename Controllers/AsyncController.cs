@@ -13,7 +13,7 @@ namespace miraCakesApp.Controllers
         [HttpGet]
         public async Task<IActionResult> GetLatest()
         {
-            using (var db = new AppDb())
+            using (var db = new AppDb("server=localhost;user id=root;password=ch@rm1n9;port=3306;database=miracakesdb"))
             {
                 await db.Connection.OpenAsync();
                 var query = new ProductQuery(db);

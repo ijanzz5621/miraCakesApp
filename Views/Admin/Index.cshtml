@@ -11,9 +11,9 @@
 
         //alert(getDomainName());
         var data = { };
-        var request = callAjax('api/async', data);
+        var request = callAjax('api/async', 'GET', data);
         request.done(function (result) {
-            alert(result);
+            alert(JSON.stringify(result));
         });
         request.fail(function (jqXHR, textStatus) {
             alert("Request failed: " + JSON.stringify(jqXHR));
