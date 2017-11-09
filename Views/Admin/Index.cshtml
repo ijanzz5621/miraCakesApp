@@ -1,10 +1,23 @@
+
+@{
+    Layout = "_AdminLayout";
+}
+
 <h1>Welcome to admin page</h1>
 
 <script>
 
     $(document).ready(function(){
 
-        alert("Testing jQuery...");
+        //alert(getDomainName());
+        var data = { };
+        var request = callAjax('api/async', data);
+        request.done(function (result) {
+            alert(result);
+        });
+        request.fail(function (jqXHR, textStatus) {
+            alert("Request failed: " + JSON.stringify(jqXHR));
+        });
 
     });
 

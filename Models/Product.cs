@@ -9,7 +9,7 @@ namespace miraCakesApp.Models
 {
     public class Product
     {
-        public int ProductId { get; set; }
+        public System.UInt32 ProductId { get; set; }
         public string ProductName { get; set; }
 
         [JsonIgnore]
@@ -23,16 +23,16 @@ namespace miraCakesApp.Models
         public async Task InsertAsync()
         {
             var cmd = Db.Connection.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"INSERT INTO `product` (`productid`, `productname`) VALUES (@productid, @productname);";
+            cmd.CommandText = @"INSERT INTO `products` (`product_id`, `product_name`) VALUES (@product_id, @product_name);";
             BindParams(cmd);
             await cmd.ExecuteNonQueryAsync();
-            ProductId = (int) cmd.LastInsertedId;
+            ProductId = (System.UInt32) cmd.LastInsertedId;
         }
 
         public async Task UpdateAsync()
         {
             var cmd = Db.Connection.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"UPDATE `product` SET `productname` = @productname WHERE `productid` = @productid;";
+            cmd.CommandText = @"UPDATE `products` SET `product_name` = @product_name WHERE `product_id` = @product_id;";
             BindParams(cmd);
             BindId(cmd);
             await cmd.ExecuteNonQueryAsync();
@@ -41,7 +41,7 @@ namespace miraCakesApp.Models
         public async Task DeleteAsync()
         {
             var cmd = Db.Connection.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"DELETE FROM `product` WHERE `productid` = @productid;";
+            cmd.CommandText = @"DELETE FROM `products` WHERE `product_id` = @product_id;";
             BindId(cmd);
             await cmd.ExecuteNonQueryAsync();
         }
@@ -50,8 +50,8 @@ namespace miraCakesApp.Models
         {
             cmd.Parameters.Add(new MySqlParameter
             {
-                ParameterName = "@productid",
-                DbType = DbType.Int32,
+                ParameterName = "@product_id",
+                DbType = DbType.UInt32,
                 Value = ProductId,
             });
         }
@@ -60,7 +60,7 @@ namespace miraCakesApp.Models
         {
             cmd.Parameters.Add(new MySqlParameter
             {
-                ParameterName = "@productname",
+                ParameterName = "@product_name",
                 DbType = DbType.String,
                 Value = ProductName,
             });

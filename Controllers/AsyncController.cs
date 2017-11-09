@@ -13,7 +13,7 @@ namespace miraCakesApp.Controllers
         [HttpGet]
         public async Task<IActionResult> GetLatest()
         {
-            using (var db = new AppDb("server=localhost;user id=root;password=ch@rm1n9;port=3306;database=miracakesdb"))
+            using (var db = new AppDb())
             {
                 await db.Connection.OpenAsync();
                 var query = new ProductQuery(db);
@@ -26,7 +26,8 @@ namespace miraCakesApp.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetOne(int id)
         {
-            using (var db = new AppDb("server=localhost;user id=root;password=ch@rm1n9;port=3306;database=miracakesdb"))
+            //"server=localhost;user id=root;password=ch@rm1n9;port=3306;database=miracakesdb"
+            using (var db = new AppDb())
             {
                 await db.Connection.OpenAsync();
                 var query = new ProductQuery(db);
@@ -41,7 +42,7 @@ namespace miraCakesApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]Product body)
         {
-            using (var db = new AppDb("server=localhost;user id=root;password=ch@rm1n9;port=3306;database=miracakesdb"))
+            using (var db = new AppDb())
             {
                 await db.Connection.OpenAsync();
                 body.Db = db;
@@ -54,7 +55,7 @@ namespace miraCakesApp.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutOne(int id, [FromBody]Product body)
         {
-            using (var db = new AppDb("server=localhost;user id=root;password=ch@rm1n9;port=3306;database=miracakesdb"))
+            using (var db = new AppDb())
             {
                 await db.Connection.OpenAsync();
                 var query = new ProductQuery(db);
@@ -71,7 +72,7 @@ namespace miraCakesApp.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteOne(int id)
         {
-            using (var db = new AppDb("server=localhost;user id=root;password=ch@rm1n9;port=3306;database=miracakesdb"))
+            using (var db = new AppDb())
             {
                 await db.Connection.OpenAsync();
                 var query = new ProductQuery(db);
@@ -87,7 +88,7 @@ namespace miraCakesApp.Controllers
         [HttpDelete]
         public async Task<IActionResult> DeleteAll()
         {
-            using (var db = new AppDb("server=localhost;user id=root;password=ch@rm1n9;port=3306;database=miracakesdb"))
+            using (var db = new AppDb())
             {
                 await db.Connection.OpenAsync();
                 var query = new ProductQuery(db);
